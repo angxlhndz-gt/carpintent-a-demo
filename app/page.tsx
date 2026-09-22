@@ -35,22 +35,22 @@ import {
 const whatsappNumber = '50249842796';
 
 const services = [
-  { title: 'Cocinas', text: 'Distribución pensada para tu espacio y rutina.', image: '/images/cocina-demo.png' },
-  { title: 'Comedores', text: 'Piezas para reunir, conversar y compartir.', image: '/images/cocina-demo.png' },
-  { title: 'Closets', text: 'Almacenamiento hecho a la medida de tu ambiente.', image: '/images/closet-demo.png' },
-  { title: 'Tocadores', text: 'Detalles funcionales para tu momento personal.', image: '/images/closet-demo.png' },
-  { title: 'Pérgolas', text: 'Estructuras para disfrutar mejor el exterior.', image: '/images/pergola-demo.png' },
-  { title: 'Cabañas', text: 'Espacios de madera concebidos para tu proyecto.', image: '/images/pergola-demo.png' },
-  { title: 'Mobiliario especial', text: 'Ideas singulares convertidas en piezas funcionales.', image: '/images/cocina-demo.png' },
+  { title: 'Cocinas', text: 'Distribución pensada para tu espacio y rutina.', image: '/images/cocina-demo.webp' },
+  { title: 'Comedores', text: 'Piezas para reunir, conversar y compartir.', image: '/images/cocina-demo.webp' },
+  { title: 'Closets', text: 'Almacenamiento hecho a la medida de tu ambiente.', image: '/images/closet-demo.webp' },
+  { title: 'Tocadores', text: 'Detalles funcionales para tu momento personal.', image: '/images/closet-demo.webp' },
+  { title: 'Pérgolas', text: 'Estructuras para disfrutar mejor el exterior.', image: '/images/pergola-demo.webp' },
+  { title: 'Cabañas', text: 'Espacios de madera concebidos para tu proyecto.', image: '/images/pergola-demo.webp' },
+  { title: 'Mobiliario especial', text: 'Ideas singulares convertidas en piezas funcionales.', image: '/images/cocina-demo.webp' },
 ];
 
 const projects = [
-  { title: 'Cocina a medida', tag: 'Cocina', image: '/images/cocina-demo.png', alt: 'Cocina de madera de demostración' },
-  { title: 'Closet con tocador', tag: 'Closet', image: '/images/closet-demo.png', alt: 'Closet y tocador de demostración' },
-  { title: 'Pérgola exterior', tag: 'Pérgola', image: '/images/pergola-demo.png', alt: 'Pérgola de madera de demostración' },
-  { title: 'Comedor integrado', tag: 'Comedor', image: '/images/cocina-demo.png', alt: 'Comedor integrado de demostración' },
-  { title: 'Mobiliario especial', tag: 'Especial', image: '/images/closet-demo.png', alt: 'Mobiliario especial de demostración' },
-  { title: 'Cabaña y terraza', tag: 'Cabaña', image: '/images/pergola-demo.png', alt: 'Cabaña y terraza de demostración' },
+  { title: 'Cocina a medida', tag: 'Cocina', image: '/images/cocina-demo.webp', alt: 'Cocina de madera de demostración' },
+  { title: 'Closet con tocador', tag: 'Closet', image: '/images/closet-demo.webp', alt: 'Closet y tocador de demostración' },
+  { title: 'Pérgola exterior', tag: 'Pérgola', image: '/images/pergola-demo.webp', alt: 'Pérgola de madera de demostración' },
+  { title: 'Comedor integrado', tag: 'Comedor', image: '/images/cocina-demo.webp', alt: 'Comedor integrado de demostración' },
+  { title: 'Mobiliario especial', tag: 'Especial', image: '/images/closet-demo.webp', alt: 'Mobiliario especial de demostración' },
+  { title: 'Cabaña y terraza', tag: 'Cabaña', image: '/images/pergola-demo.webp', alt: 'Cabaña y terraza de demostración' },
 ];
 
 const process = [
@@ -180,7 +180,7 @@ export default function Home() {
 
       <section className="hero" id="inicio">
         <div className="hero-copy"><p className="eyebrow"><MapPin size={14} /> San Raymundo y zonas cercanas</p><h1>Carpintería a medida que hace <em>tuyo</em> cada espacio.</h1><p className="hero-text">Diseñamos cocinas, closets, pérgolas y mobiliario especial a partir de tu idea, tu espacio y las medidas de tu proyecto.</p><div className="hero-actions"><button className="button button-primary" type="button" onClick={scrollToQuote}>Solicitar cotización <ArrowRight size={18} /></button><a className="button button-secondary" href="#proyectos">Ver proyectos <MoveRight size={18} /></a></div><p className="hero-note"><Sparkles size={15} /> Proyectos personalizados, hechos al gusto del cliente.</p></div>
-        <div className="hero-visual"><Image src="/images/cocina-demo.png" fill sizes="(max-width: 800px) 100vw, 52vw" priority alt="Cocina de madera como imagen de demostración" /><div className="hero-caption"><span>01</span><p>Diseño a medida<br /><strong>Proyecto de demostración</strong></p></div></div>
+        <div className="hero-visual"><Image src="/images/cocina-demo.webp" fill sizes="(max-width: 800px) 100vw, 52vw" priority alt="Cocina de madera como imagen de demostración" /><div className="hero-caption"><span>01</span><p>Diseño a medida<br /><strong>Proyecto de demostración</strong></p></div></div>
       </section>
 
       <section className="section service-section" id="servicios">
