@@ -22,7 +22,7 @@ import {
   Upload,
   X,
 } from 'lucide-react';
-import { type ReactNode, type SyntheticEvent, useEffect, useMemo, useState } from 'react';
+import { type ReactNode, type SyntheticEvent, useMemo, useState } from 'react';
 import {
   Dialog,
   DialogClose,
@@ -73,17 +73,6 @@ type FormValues = {
 
 const initialValues: FormValues = { name: '', whatsapp: '', project: '', dimensions: '', location: '', materials: '', details: '' };
 
-type ModelContext = {
-  registerTool: (tool: {
-    name: string;
-    title: string;
-    description: string;
-    inputSchema: object;
-    annotations: { readOnlyHint: boolean; untrustedContentHint: boolean };
-    execute: (input: unknown) => unknown;
-  }, options: { signal: AbortSignal }) => void | Promise<void>;
-};
-
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<number | null>(null);
@@ -128,45 +117,6 @@ export default function Home() {
     setSentNote(true);
     window.setTimeout(() => setIsSending(false), 350);
   };
-
-  useEffect(() => {
-    const context = (document as Document & { modelContext?: ModelContext }).modelContext;
-    if (!context?.registerTool) return;
-    const lifecycle = new AbortController();
-    const projectTypes = ['Cocina', 'Comedor', 'Closet', 'Tocador', 'Pérgola', 'Cabaña', 'Mobiliario especial'];
-    void Promise.resolve(context.registerTool({
-      name: 'prepare_quote_request',
-      title: 'Preparar solicitud de cotización',
-      description: 'Completa la solicitud de Carpintería Pro GT y abre la revisión visible antes de enviar por WhatsApp.',
-      inputSchema: {
-        type: 'object',
-        properties: {
-          name: { type: 'string' }, whatsapp: { type: 'string' }, project: { type: 'string', enum: projectTypes },
-          dimensions: { type: 'string' }, location: { type: 'string' }, materials: { type: 'string' }, details: { type: 'string' },
-        },
-        required: ['name', 'whatsapp', 'project', 'location'],
-        additionalProperties: false,
-      },
-      annotations: { readOnlyHint: false, untrustedContentHint: true },
-      execute(input) {
-        const request = input as Partial<FormValues>;
-        const valid = typeof request.name === 'string' && request.name.trim()
-          && typeof request.whatsapp === 'string' && request.whatsapp.trim()
-          && typeof request.project === 'string' && projectTypes.includes(request.project)
-          && typeof request.location === 'string' && request.location.trim();
-        if (!valid) return { status: 'error', message: 'Nombre, WhatsApp, tipo de proyecto y ubicación son obligatorios.' };
-        setValues({
-          name: request.name!.trim(), whatsapp: request.whatsapp!.trim(), project: request.project!, location: request.location!.trim(),
-          dimensions: typeof request.dimensions === 'string' ? request.dimensions : '', materials: typeof request.materials === 'string' ? request.materials : '', details: typeof request.details === 'string' ? request.details : '',
-        });
-        setErrors({});
-        setReviewOpen(true);
-        document.querySelector('#cotizacion')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return { status: 'ready_for_review', message: 'Solicitud preparada; revisa el resumen antes de abrir WhatsApp.' };
-      },
-    }, { signal: lifecycle.signal })).catch(() => undefined);
-    return () => lifecycle.abort();
-  }, []);
 
   return (
     <main>
